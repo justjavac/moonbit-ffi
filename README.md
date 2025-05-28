@@ -1,6 +1,4 @@
-# ffi
-
-MoonBit Foreign Function Interface.
+# MoonBit Foreign Function Interface.
 
 A small utility library for converting between C-style null-terminated byte
 strings (`Bytes`) and MoonBit `String` values.
