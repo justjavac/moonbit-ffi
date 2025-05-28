@@ -21,7 +21,7 @@ moon add justjavac/ffi
 
 ```moonbit
 let data = b"Hello, world!\x00"
-let s    = @ffi.from_cstr(data)
+let s = @ffi.from_cstr(data)
 assert_eq!(s, "Hello, world!")
 
 let cstr = @ffi.to_cstr("Hello, world!")
