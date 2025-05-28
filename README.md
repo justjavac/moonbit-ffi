@@ -13,7 +13,7 @@ strings (`Bytes`) and MoonBit `String` values.
 
 Add `justjavac/ffi` to your dependencies:
 
-```sh
+```shell
 moon add justjavac/ffi
 ```
 
