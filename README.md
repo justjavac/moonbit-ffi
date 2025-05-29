@@ -14,6 +14,7 @@ strings (`Bytes`) and MoonBit `String` values.
 Add `justjavac/ffi` to your dependencies:
 
 ```shell
+moon update
 moon add justjavac/ffi
 ```
 
@@ -39,7 +40,7 @@ assert_eq!(cstr, data)
 
 Build and test:
 
-```sh
+```shell
 moon build
 moon test --doc
 ```
