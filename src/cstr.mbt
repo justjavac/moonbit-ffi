@@ -8,7 +8,7 @@
 /// - `b`: A byte array that is expected to be null-terminated.
 /// 
 /// Returns:
-/// // A `String` representation of the byte array, excluding the null terminator.
+/// - A `String` representation of the byte array, excluding the null terminator.
 /// 
 /// Example:
 /// ```moonbit
@@ -28,6 +28,7 @@ pub fn from_cstr(b : Bytes) -> String {
 ///
 /// Parameters:
 /// - `s`: A `String` that will be converted to a null-terminated byte array.
+///
 /// Returns:
 /// - A `Bytes` object containing the null-terminated byte representation of the string.
 ///
