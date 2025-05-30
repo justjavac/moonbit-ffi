@@ -53,12 +53,12 @@ jobs:
       - name: moon test --doc
         if: false
         run: |
-           moon test --doc
+          moon test --doc
 
       - name: moon build
         if: false
         run: |
-           moon build --target all
+          moon build --target all
 
   bleeding-check:
     continue-on-error: true
@@ -110,9 +110,9 @@ jobs:
       - name: moon test --doc
         if: false
         run: |
-           moon test --doc
+          moon test --doc
 
       - name: moon build
         if: false
         run: |
-           moon build --target all
+          moon build --target all
