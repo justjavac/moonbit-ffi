@@ -13,7 +13,7 @@
 /// Example:
 /// ```moonbit
 /// let s = from_cstr(b"Hello, world!\x00")
-/// assert_eq!(s, "Hello, world!")
+/// assert_eq(s, "Hello, world!")
 /// ```
 pub fn from_cstr(b : Bytes) -> String {
   if b[b.length() - 1] != 0x00 {
@@ -35,7 +35,7 @@ pub fn from_cstr(b : Bytes) -> String {
 /// Example:
 /// ```moonbit
 /// let cstr = to_cstr("Hello, world!")
-/// assert_eq!(cstr, b"Hello, world!\x00")
+/// assert_eq(cstr, b"Hello, world!\x00")
 /// ```
 pub fn to_cstr(s : String) -> Bytes {
   let s = s.to_array()
@@ -107,7 +107,7 @@ pub fn try_from_cstr(b : Bytes) -> Result[String, CStrError] {
 /// ```moonbit
 /// let result = try_to_cstr("Hello, world!")
 /// match result {
-///   Ok(cstr) => println("Converted successfully")
+///   Ok(cstr) => println("Converted successfully: \{cstr}")
 ///   Err(e) => println("Error: \{e}")
 /// }
 /// ```
@@ -134,7 +134,7 @@ pub fn try_to_cstr(s : String) -> Result[Bytes, CStrError] {
 /// Example:
 /// ```moonbit
 /// let len = cstr_len(b"Hello\x00")
-/// assert_eq!(len, 5)
+/// assert_eq(len, 5)
 /// ```
 pub fn cstr_len(b : Bytes) -> Int {
   for i = 0; i < b.length(); i = i + 1 {
@@ -155,9 +155,9 @@ pub fn cstr_len(b : Bytes) -> Int {
 ///
 /// Example:
 /// ```moonbit
-/// assert_eq!(is_valid_cstr(b"Hello\x00"), true)
-/// assert_eq!(is_valid_cstr(b"Hello"), false)
-/// assert_eq!(is_valid_cstr(b"Hel\x00lo\x00"), false)
+/// assert_eq(is_valid_cstr(b"Hello\x00"), true)
+/// assert_eq(is_valid_cstr(b"Hello"), false)
+/// assert_eq(is_valid_cstr(b"Hel\x00lo\x00"), false)
 /// ```
 pub fn is_valid_cstr(b : Bytes) -> Bool {
   if b.length() == 0 || b[b.length() - 1] != 0x00 {
@@ -184,8 +184,8 @@ pub fn is_valid_cstr(b : Bytes) -> Bool {
 ///
 /// Example:
 /// ```moonbit
-/// assert_eq!(cstr_eq(b"Hello\x00", b"Hello\x00"), true)
-/// assert_eq!(cstr_eq(b"Hello\x00", b"World\x00"), false)
+/// assert_eq(cstr_eq(b"Hello\x00", b"Hello\x00"), true)
+/// assert_eq(cstr_eq(b"Hello\x00", b"World\x00"), false)
 /// ```
 pub fn cstr_eq(a : Bytes, b : Bytes) -> Bool {
   let len_a = cstr_len(a)

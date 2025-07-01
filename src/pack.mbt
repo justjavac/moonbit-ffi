@@ -7,8 +7,6 @@
 ///| Error types for struct packing operations
 pub enum PackError {
   InsufficientData
-  InvalidFormat
-  SizeMismatch
 }
 
 ///| A utility for packing data into bytes with specific alignment

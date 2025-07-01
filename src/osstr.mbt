@@ -16,6 +16,7 @@ pub struct OsString {
 /// Example:
 /// ```moonbit
 /// let os_str = OsString::new()
+/// assert_eq(os_str.is_empty(), true)
 /// ```
 pub fn OsString::new() -> OsString {
   { data: Bytes::new(0) }
@@ -32,6 +33,7 @@ pub fn OsString::new() -> OsString {
 /// Example:
 /// ```moonbit
 /// let os_str = OsString::from_string("Hello, world!")
+/// assert_eq(os_str.to_string(), Some("Hello, world!"))
 /// ```
 pub fn OsString::from_string(s : String) -> OsString {
   // Convert string to UTF-8 bytes manually since to_bytes() returns UTF-16
@@ -61,6 +63,7 @@ pub fn OsString::from_string(s : String) -> OsString {
 /// Example:
 /// ```moonbit
 /// let os_str = OsString::from_bytes(b"Hello")
+/// assert_eq(os_str.as_bytes(), b"Hello")
 /// ```
 pub fn OsString::from_bytes(bytes : Bytes) -> OsString {
   { data: bytes }
@@ -105,6 +108,7 @@ pub fn to_string(self : OsString) -> String? {
 /// ```moonbit
 /// let os_str = OsString::from_bytes(b"Hello")
 /// let s = os_str.to_string_lossy()
+/// assert_eq(s, "Hello")
 /// ```
 pub fn to_string_lossy(self : OsString) -> String {
   match self.to_string() {
@@ -135,6 +139,7 @@ pub fn to_string_lossy(self : OsString) -> String {
 /// ```moonbit
 /// let os_str = OsString::from_string("Hello")
 /// let bytes = os_str.as_bytes()
+/// assert_eq(bytes, b"Hello")
 /// ```
 pub fn as_bytes(self : OsString) -> Bytes {
   self.data
@@ -149,6 +154,7 @@ pub fn as_bytes(self : OsString) -> Bytes {
 /// ```moonbit
 /// let os_str = OsString::from_string("Hello")
 /// let len = os_str.len()
+/// assert_eq(len, 5)
 /// ```
 pub fn len(self : OsString) -> Int {
   self.data.length()
@@ -161,7 +167,7 @@ pub fn len(self : OsString) -> Int {
 ///
 /// Example:
 /// ```moonbit
-/// assert_eq!(OsString::new().is_empty(), true)
+/// assert_eq(OsString::new().is_empty(), true)
 /// ```
 pub fn is_empty(self : OsString) -> Bool {
   self.data.length() == 0

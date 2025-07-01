@@ -24,6 +24,7 @@ pub fn null() -> RawPtr {
 /// Example:
 /// ```moonbit
 /// let ptr = from_addr(0x1000)
+/// assert_eq(ptr.addr, 0x1000)
 /// ```
 pub fn from_addr(addr : Int) -> RawPtr {
   { addr, }
@@ -41,6 +42,7 @@ pub fn from_addr(addr : Int) -> RawPtr {
 /// ```moonbit
 /// let ptr = from_addr(0x1000)
 /// let addr = to_addr(ptr)
+/// assert_eq(addr, 0x1000)
 /// ```
 pub fn to_addr(ptr : RawPtr) -> Int {
   ptr.addr
@@ -56,8 +58,8 @@ pub fn to_addr(ptr : RawPtr) -> Int {
 ///
 /// Example:
 /// ```moonbit
-/// assert_eq!(is_null(null()), true)
-/// assert_eq!(is_null(from_addr(0x1000)), false)
+/// assert_eq(is_null(null()), true)
+/// assert_eq(is_null(from_addr(0x1000)), false)
 /// ```
 pub fn is_null(ptr : RawPtr) -> Bool {
   ptr.addr == 0
@@ -76,6 +78,7 @@ pub fn is_null(ptr : RawPtr) -> Bool {
 /// ```moonbit
 /// let ptr = from_addr(0x1000)
 /// let new_ptr = offset(ptr, 8)
+/// assert_eq(to_addr(new_ptr), 0x1008)
 /// ```
 pub fn offset(ptr : RawPtr, offset : Int) -> RawPtr {
   { addr: ptr.addr + offset }
@@ -95,6 +98,7 @@ pub fn offset(ptr : RawPtr, offset : Int) -> RawPtr {
 /// let ptr1 = from_addr(0x1000)
 /// let ptr2 = from_addr(0x1008)
 /// let distance = ptr_distance(ptr1, ptr2)
+/// assert_eq(distance, 8)
 /// ```
 pub fn ptr_distance(ptr1 : RawPtr, ptr2 : RawPtr) -> Int {
   if ptr1.addr > ptr2.addr {
@@ -117,6 +121,7 @@ pub fn ptr_distance(ptr1 : RawPtr, ptr2 : RawPtr) -> Int {
 /// ```moonbit
 /// let ptr = from_addr(0x1001)
 /// let aligned = align_ptr(ptr, 8) // Align to 8-byte boundary
+/// assert_eq(to_addr(aligned), 0x1008)
 /// ```
 pub fn align_ptr(ptr : RawPtr, alignment : Int) -> RawPtr {
   let mask = alignment - 1
@@ -136,7 +141,7 @@ pub fn align_ptr(ptr : RawPtr, alignment : Int) -> RawPtr {
 /// Example:
 /// ```moonbit
 /// let ptr = from_addr(0x1000)
-/// assert_eq!(is_aligned(ptr, 8), true)
+/// assert_eq(is_aligned(ptr, 8), true)
 /// ```
 pub fn is_aligned(ptr : RawPtr, alignment : Int) -> Bool {
   ptr.addr % alignment == 0

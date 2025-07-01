@@ -61,6 +61,5 @@ test "struct packing error handling" {
   match unpacker.unpack_i32_le() {
     Ok(_) => assert_false(true) // Should fail
     Err(InsufficientData) => assert_true(true)
-    Err(_) => assert_false(true)
   }
 }

@@ -15,7 +15,7 @@
 /// Example:
 /// ```moonbit
 /// let s = from_wstr_lossy(b"\x48\x00\x65\x00\x6c\x00\x6c\x00\x6f\x00\x00\x00")
-/// assert_eq!(s, "Hello")
+/// assert_eq(s, "Hello")
 /// ```
 pub fn from_wstr_lossy(b : Bytes) -> String {
   if b.length() < 2 || b[b.length() - 2] != 0x00 || b[b.length() - 1] != 0x00 {
@@ -36,7 +36,7 @@ pub fn from_wstr_lossy(b : Bytes) -> String {
 /// Example:
 /// ```moonbit
 /// let wstr = to_wstr("Hello")
-/// assert_eq!(wstr, b"\x48\x00\x65\x00\x6c\x00\x6c\x00\x6f\x00\x00\x00")
+/// assert_eq(wstr, b"\x48\x00\x65\x00\x6c\x00\x6c\x00\x6f\x00\x00\x00")
 /// ```
 pub fn to_wstr(s : String) -> Bytes {
   return @encoding.encode(UTF16, s + "\u{0000}")
@@ -84,7 +84,7 @@ pub fn try_from_wstr(b : Bytes) -> Result[String, String] {
 /// ```moonbit
 /// let result = try_to_wstr("Hello")
 /// match result {
-///   Ok(wstr) => println("Converted successfully")
+///   Ok(wstr) => println("Converted successfully: \{wstr}")
 ///   Err(e) => println("Error: \{e}")
 /// }
 /// ```
@@ -109,7 +109,7 @@ pub fn try_to_wstr(s : String) -> Result[Bytes, String] {
 /// Example:
 /// ```moonbit
 /// let len = wstr_len(b"\x48\x00\x65\x00\x6c\x00\x6c\x00\x6f\x00\x00\x00")
-/// assert_eq!(len, 5)
+/// assert_eq(len, 5)
 /// ```
 pub fn wstr_len(b : Bytes) -> Int {
   if b.length() < 2 {
@@ -137,8 +137,8 @@ pub fn wstr_len(b : Bytes) -> Int {
 ///
 /// Example:
 /// ```moonbit
-/// assert_eq!(is_valid_wstr(b"\x48\x00\x65\x00\x00\x00"), true)
-/// assert_eq!(is_valid_wstr(b"\x48\x00\x65"), false)
+/// assert_eq(is_valid_wstr(b"\x48\x00\x65\x00\x00\x00"), true)
+/// assert_eq(is_valid_wstr(b"\x48\x00\x65"), false)
 /// ```
 pub fn is_valid_wstr(b : Bytes) -> Bool {
   if b.length() < 2 || b.length() % 2 != 0 {
@@ -172,7 +172,7 @@ pub fn is_valid_wstr(b : Bytes) -> Bool {
 /// ```moonbit
 /// let str1 = b"\x48\x00\x65\x00\x00\x00"  // "He"
 /// let str2 = b"\x48\x00\x65\x00\x00\x00"  // "He"
-/// assert_eq!(wstr_eq(str1, str2), true)
+/// assert_eq(wstr_eq(str1, str2), true)
 /// ```
 pub fn wstr_eq(a : Bytes, b : Bytes) -> Bool {
   let len_a = wstr_len(a)
@@ -204,6 +204,8 @@ pub fn wstr_eq(a : Bytes, b : Bytes) -> Bool {
 /// let hello = b"\x48\x00\x65\x00\x00\x00"  // "He"
 /// let world = b"\x6c\x00\x6c\x00\x6f\x00\x00\x00"  // "llo"
 /// let result = wstr_concat(hello, world)
+/// assert_eq(result, b"\x48\x00\x65\x00\x6c\x00\x6c\x00\x6f\x00\x00\x00")
+/// assert_eq(result.length(), 12) // 6 characters + 2 null terminators
 /// ```
 pub fn wstr_concat(a : Bytes, b : Bytes) -> Bytes {
   let a_len = wstr_len(a) * 2 // Convert to byte length
