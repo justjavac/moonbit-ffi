@@ -1,4 +1,4 @@
-///| This module provides functions to convert between C-style null-terminated byte strings and Rust's `String` type.
+///| This module provides functions to convert between C-style null-terminated byte strings and MoonBit's `String` type.
 ///
 /// It includes functions to convert from a byte array to a `String` and from a `String` to a byte array.
 
