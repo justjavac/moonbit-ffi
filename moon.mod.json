@@ -1,6 +1,6 @@
 {
   "name": "justjavac/ffi",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "deps": {
     "moonbitlang/x": "0.4.29"
   },
@@ -11,8 +11,16 @@
     "ffi",
     "bindings",
     "abi",
-    "utils"
+    "utils",
+    "cstring",
+    "wstring",
+    "pointer",
+    "osstring",
+    "conversion",
+    "endian",
+    "utf16",
+    "interop"
   ],
-  "description": "MoonBit Foreign Function Interface.",
+  "description": "Comprehensive MoonBit Foreign Function Interface utilities with C strings, wide strings, raw pointers, OS strings, and type conversions.",
   "source": "src"
 }
