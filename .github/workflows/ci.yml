@@ -48,7 +48,7 @@ jobs:
 
       - name: run moon test
         run: |
-          moon test --target all
+          moon test --target native
 
       - name: moon test --doc
         if: false
@@ -58,7 +58,7 @@ jobs:
       - name: moon build
         if: false
         run: |
-          moon build --target all
+          moon build --target native
 
   bleeding-check:
     continue-on-error: true
@@ -87,10 +87,6 @@ jobs:
         run: |
           moon version --all
 
-      - name: moon version
-        run: |
-          moon version --all
-
       - name: moon install
         run: |
           moon update
@@ -105,7 +101,7 @@ jobs:
 
       - name: run moon test
         run: |
-          moon test --target all
+          moon test --target native
 
       - name: moon test --doc
         if: false
@@ -115,4 +111,4 @@ jobs:
       - name: moon build
         if: false
         run: |
-          moon build --target all
+          moon build --target native

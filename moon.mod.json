@@ -11,8 +11,16 @@
     "ffi",
     "bindings",
     "abi",
-    "utils"
+    "utils",
+    "cstring",
+    "wstring",
+    "pointer",
+    "osstring",
+    "conversion",
+    "endian",
+    "utf16",
+    "interop"
   ],
-  "description": "MoonBit Foreign Function Interface.",
+  "description": "Comprehensive MoonBit Foreign Function Interface utilities with C strings, wide strings, raw pointers, OS strings, and type conversions.",
   "source": "src"
 }
