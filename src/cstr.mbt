@@ -13,7 +13,7 @@
 /// Example:
 /// ```moonbit
 /// let s = from_cstr(b"Hello, world!\x00")
-/// assert_eq!(s, "Hello, world!")
+/// assert_eq(s, "Hello, world!")
 /// ```
 pub fn from_cstr(b : Bytes) -> String {
   if b[b.length() - 1] != 0x00 {
@@ -35,7 +35,7 @@ pub fn from_cstr(b : Bytes) -> String {
 /// Example:
 /// ```moonbit
 /// let cstr = to_cstr("Hello, world!")
-/// assert_eq!(cstr, b"Hello, world!\x00")
+/// assert_eq(cstr, b"Hello, world!\x00")
 /// ```
 pub fn to_cstr(s : String) -> Bytes {
   let s = s.to_array()

@@ -15,7 +15,7 @@
 /// Example:
 /// ```moonbit
 /// let s = from_wstr_lossy(b"\x48\x00\x65\x00\x6c\x00\x6c\x00\x6f\x00\x00\x00")
-/// assert_eq!(s, "Hello")
+/// assert_eq(s, "Hello")
 /// ```
 pub fn from_wstr_lossy(b : Bytes) -> String {
   if b.length() < 2 || b[b.length() - 2] != 0x00 || b[b.length() - 1] != 0x00 {
@@ -36,7 +36,7 @@ pub fn from_wstr_lossy(b : Bytes) -> String {
 /// Example:
 /// ```moonbit
 /// let wstr = to_wstr("Hello")
-/// assert_eq!(wstr, b"\x48\x00\x65\x00\x6c\x00\x6c\x00\x6f\x00\x00\x00")
+/// assert_eq(wstr, b"\x48\x00\x65\x00\x6c\x00\x6c\x00\x6f\x00\x00\x00")
 /// ```
 pub fn to_wstr(s : String) -> Bytes {
   return @encoding.encode(UTF16, s + "\u{0000}")
