@@ -40,7 +40,7 @@ jobs:
           moon install
 
       - name: moon check
-        run: moon check --target native --deny-warn
+        run: moon check --target all --deny-warn
 
       - name: format diff
         run: |
@@ -49,11 +49,6 @@ jobs:
       - name: run moon test
         run: |
           moon test --target all
-
-      - name: moon test --doc
-        if: false
-        run: |
-          moon test --doc
 
       - name: moon build
         if: false
@@ -97,7 +92,7 @@ jobs:
           moon install
 
       - name: moon check
-        run: moon check --target native --deny-warn
+        run: moon check --target all --deny-warn
 
       - name: format diff
         run: |
@@ -106,11 +101,6 @@ jobs:
       - name: run moon test
         run: |
           moon test --target all
-
-      - name: moon test --doc
-        if: false
-        run: |
-          moon test --doc
 
       - name: moon build
         if: false
