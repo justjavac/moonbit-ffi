@@ -2,7 +2,7 @@
 ///
 /// It includes functions to convert from a byte array to a `String` and from a `String` to a byte array.
 
-///|! Converts a byte array to a `String` and vice versa, handling null-termination.
+///| Converts a null-terminated byte array to a `String`.
 /// 
 /// Parameters:
 /// - `b`: A byte array that is expected to be null-terminated.
