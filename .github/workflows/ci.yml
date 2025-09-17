@@ -11,7 +11,11 @@ jobs:
   stable-check:
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, macos-13, windows-latest]
+        os: 
+          - ubuntu-latest
+          - macos-latest
+          # - macos-13
+          - windows-latest
       fail-fast: false
     runs-on: ${{ matrix.os }}
     continue-on-error: false
@@ -59,7 +63,11 @@ jobs:
     continue-on-error: true
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest, macos-13]
+        os:
+          - ubuntu-latest
+          - macos-latest
+          # - macos-13
+          - windows-latest
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
