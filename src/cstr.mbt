@@ -50,7 +50,8 @@
 /// - **Windows**: For wide character strings (UTF-16), use the `wstr` module instead
 /// - **C interop**: Perfect for POSIX APIs and most Unix/Linux C functions
 
-///| Converts a null-terminated byte array to a `String`.
+///|
+/// Converts a null-terminated byte array to a `String`.
 /// 
 /// This function takes a C-style null-terminated byte array and converts it
 /// to a MoonBit `String`. It validates that the input is properly null-terminated
@@ -110,7 +111,8 @@ pub fn from_cstr(b : Bytes) -> String {
   return b.map(fn(c) { c.to_char() }) |> String::from_array
 }
 
-///| Converts a `String` to a C-style null-terminated byte array.
+///|
+/// Converts a `String` to a C-style null-terminated byte array.
 /// 
 /// This function takes a MoonBit `String` and converts it to a null-terminated
 /// byte array suitable for passing to C functions via FFI. It appends a null

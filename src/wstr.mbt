@@ -63,7 +63,8 @@
 /// - **Cross-platform**: Can be used on other platforms for UTF-16 data
 /// - **Performance**: Efficient conversion using native encoding libraries
 
-///| Converts a null-terminated UTF-16 byte array to a `String`.
+///|
+/// Converts a null-terminated UTF-16 byte array to a `String`.
 /// 
 /// This function handles UTF-16 encoded wide strings commonly used on Windows.
 /// It expects the byte array to be null-terminated (ending with two zero bytes)
@@ -137,7 +138,8 @@ pub fn from_wstr_lossy(b : Bytes) -> String {
   return decoder.decode_lossy(b[0:b.length() - 2])
 }
 
-///| Converts a `String` to a null-terminated UTF-16 byte array.
+///|
+/// Converts a `String` to a null-terminated UTF-16 byte array.
 /// 
 /// This function converts a MoonBit string to UTF-16 encoding with null termination,
 /// which is the format commonly used for Windows wide string APIs. The resulting
