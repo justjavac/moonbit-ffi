@@ -92,22 +92,22 @@
 /// // Basic ASCII conversion
 /// let wide_hello = b"\x48\x00\x65\x00\x6c\x00\x6c\x00\x6f\x00\x00\x00"
 /// let str_hello = @ffi.from_wstr_lossy(wide_hello)
-/// // str_hello equals "Hello"
+/// assert_eq(str_hello, "Hello")
 /// 
 /// // Unicode characters (Chinese text)
 /// let wide_chinese = b"\x16\x4e\x96\x75\x00\x00"  // "世界" in UTF-16LE
 /// let str_chinese = @ffi.from_wstr_lossy(wide_chinese)
-/// // str_chinese equals "世界"
+/// assert_eq(str_chinese, "世界")
 /// 
 /// // Empty string
 /// let empty_wide = b"\x00\x00"
 /// let empty_str = @ffi.from_wstr_lossy(empty_wide)
-/// // empty_str equals ""
+/// assert_eq(empty_str, "")
 /// 
 /// // Mixed content
 /// let mixed = b"\x48\x00\x65\x00\x6c\x00\x6c\x00\x6f\x00\x2c\x00\x20\x00\x16\x4e\x96\x75\x21\x00\x00\x00"
 /// let mixed_str = @ffi.from_wstr_lossy(mixed)
-/// // mixed_str equals "Hello, 世界!"
+/// assert_eq(mixed_str, "Hello, 世界!")
 /// ```
 /// 
 /// ## Safety and Error Handling
@@ -165,22 +165,22 @@ pub fn from_wstr_lossy(b : Bytes) -> String {
 /// // Basic ASCII conversion
 /// let hello_str = "Hello"
 /// let hello_wide = @ffi.to_wstr(hello_str)
-/// // hello_wide contains: b"\x48\x00\x65\x00\x6c\x00\x6c\x00\x6f\x00\x00\x00"
-/// 
+/// assert_eq(hello_wide, b"\x48\x00\x65\x00\x6c\x00\x6c\x00\x6f\x00\x00\x00")
+///
 /// // Unicode characters (Chinese text)
 /// let chinese_str = "世界"
 /// let chinese_wide = @ffi.to_wstr(chinese_str)
-/// // chinese_wide contains UTF-16 encoded bytes for "世界" with null termination
+/// assert_eq(chinese_wide, b"\x16\x4e\x96\x75\x00\x00")
 /// 
 /// // Empty string
 /// let empty_str = ""
 /// let empty_wide = @ffi.to_wstr(empty_str)
-/// // empty_wide contains: b"\x00\x00"
+/// assert_eq(empty_wide, b"\x00\x00")
 /// 
 /// // Mixed content with emojis
 /// let mixed_str = "Hello, 世界! 🌍"
 /// let mixed_wide = @ffi.to_wstr(mixed_str)
-/// // mixed_wide contains UTF-16 encoded bytes with null termination
+/// assert_eq(mixed_wide, b"\x48\x00\x65\x00\x6c\x00\x6c\x00\x6f\x00\x2c\x00\x20\x00\x16\x4e\x96\x75\x21\x00\x20\xd8\x3d\xde\x0d\x00\x00")
 /// 
 /// // Using with Windows API
 /// // extern "C" fn CreateFileW(

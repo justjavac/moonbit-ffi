@@ -77,17 +77,17 @@
 /// // Basic conversion
 /// let c_str = b"Hello, world!\x00"
 /// let moonbit_str = @ffi.from_cstr(c_str)
-/// // moonbit_str equals "Hello, world!"
+/// assert_eq(moonbit_str, "Hello, world!")
 /// 
 /// // UTF-8 text conversion
 /// let utf8_c_str = b"Caf\xc3\xa9\x00"  // "Café" in UTF-8 with null terminator
 /// let utf8_str = @ffi.from_cstr(utf8_c_str)
-/// // utf8_str equals "Café"
+/// assert_eq(utf8_str, "Café")
 /// 
 /// // Empty string conversion
 /// let empty_c_str = b"\x00"
 /// let empty_str = @ffi.from_cstr(empty_c_str)
-/// // empty_str equals ""
+/// assert_eq(empty_str, "")
 /// ```
 /// 
 /// ## Safety
@@ -139,17 +139,17 @@ pub fn from_cstr(b : Bytes) -> String {
 /// // Basic conversion
 /// let moonbit_str = "Hello, world!"
 /// let c_str = @ffi.to_cstr(moonbit_str)
-/// // c_str equals b"Hello, world!\x00"
+/// assert_eq(c_str, b"Hello, world!\x00")
 /// 
 /// // Empty string conversion
 /// let empty_str = ""
 /// let empty_c_str = @ffi.to_cstr(empty_str)
-/// // empty_c_str equals b"\x00"
+/// assert_eq(empty_c_str, b"\x00")
 /// 
 /// // UTF-8 text conversion
 /// let utf8_str = "Café"
 /// let utf8_c_str = @ffi.to_cstr(utf8_str)
-/// // utf8_c_str contains UTF-8 bytes: b"Caf\xc3\xa9\x00"
+/// assert_eq(utf8_c_str, b"Caf\xc3\xa9\x00")
 /// 
 /// // Using with FFI functions
 /// // extern "C" fn printf(format : Bytes, ...) -> Int = "printf"
