@@ -93,17 +93,17 @@
 /// let wide_hello = b"\x48\x00\x65\x00\x6c\x00\x6c\x00\x6f\x00\x00\x00"
 /// let str_hello = @ffi.from_wstr_lossy(wide_hello)
 /// assert_eq(str_hello, "Hello")
-/// 
+///
 /// // Unicode characters (Chinese text)
 /// let wide_chinese = b"\x16\x4e\x96\x75\x00\x00"  // "世界" in UTF-16LE
 /// let str_chinese = @ffi.from_wstr_lossy(wide_chinese)
 /// assert_eq(str_chinese, "世界")
-/// 
+///
 /// // Empty string
 /// let empty_wide = b"\x00\x00"
 /// let empty_str = @ffi.from_wstr_lossy(empty_wide)
 /// assert_eq(empty_str, "")
-/// 
+///
 /// // Mixed content
 /// let mixed = b"\x48\x00\x65\x00\x6c\x00\x6c\x00\x6f\x00\x2c\x00\x20\x00\x16\x4e\x96\x75\x21\x00\x00\x00"
 /// let mixed_str = @ffi.from_wstr_lossy(mixed)
@@ -171,17 +171,17 @@ pub fn from_wstr_lossy(b : Bytes) -> String {
 /// let chinese_str = "世界"
 /// let chinese_wide = @ffi.to_wstr(chinese_str)
 /// assert_eq(chinese_wide, b"\x16\x4e\x96\x75\x00\x00")
-/// 
+///
 /// // Empty string
 /// let empty_str = ""
 /// let empty_wide = @ffi.to_wstr(empty_str)
 /// assert_eq(empty_wide, b"\x00\x00")
-/// 
+///
 /// // Mixed content with emojis
 /// let mixed_str = "Hello, 世界! 🌍"
 /// let mixed_wide = @ffi.to_wstr(mixed_str)
 /// assert_eq(mixed_wide, b"\x48\x00\x65\x00\x6c\x00\x6c\x00\x6f\x00\x2c\x00\x20\x00\x16\x4e\x96\x75\x21\x00\x20\xd8\x3d\xde\x0d\x00\x00")
-/// 
+///
 /// // Using with Windows API
 /// // extern "C" fn CreateFileW(
 /// //   lpFileName : Bytes,
