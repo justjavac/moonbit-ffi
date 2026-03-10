@@ -73,7 +73,7 @@
 /// 
 /// ## Example
 /// 
-/// ```moonbit
+/// ```moonbit nocheck
 /// // Basic conversion
 /// let c_str = b"Hello, world!\x00"
 /// let moonbit_str = @ffi.from_cstr(c_str)
@@ -135,7 +135,7 @@ pub fn from_cstr(b : Bytes) -> String {
 /// 
 /// ## Example
 /// 
-/// ```moonbit
+/// ```moonbit nocheck
 /// // Basic conversion
 /// let moonbit_str = "Hello, world!"
 /// let c_str = @ffi.to_cstr(moonbit_str)

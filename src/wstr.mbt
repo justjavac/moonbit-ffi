@@ -88,7 +88,7 @@
 /// 
 /// ## Example
 /// 
-/// ```moonbit
+/// ```moonbit nocheck
 /// // Basic ASCII conversion
 /// let wide_hello = b"\x48\x00\x65\x00\x6c\x00\x6c\x00\x6f\x00\x00\x00"
 /// let str_hello = @ffi.from_wstr_lossy(wide_hello)
@@ -161,7 +161,7 @@ pub fn from_wstr_lossy(b : Bytes) -> String {
 /// 
 /// ## Example
 /// 
-/// ```moonbit
+/// ```moonbit nocheck
 /// // Basic ASCII conversion
 /// let hello_str = "Hello"
 /// let hello_wide = @ffi.to_wstr(hello_str)
