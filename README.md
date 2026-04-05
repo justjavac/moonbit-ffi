@@ -10,10 +10,6 @@ It converts MoonBit `String` values to and from:
 - C `char*`-style null-terminated UTF-8 byte buffers
 - Windows `wchar_t*`-style null-terminated UTF-16LE byte buffers
 
-This README is the repository guide. Package consumers can use
-[`README.mbt.md`](./README.mbt.md) for the shorter package-facing version that is
-published with the module metadata.
-
 ## Why This Repo Exists
 
 MoonBit already gives you low-level access to `Bytes`, but native APIs often want
@@ -42,7 +38,6 @@ paths and failure paths.
 ## Installation
 
 ```shell
-moon update
 moon add justjavac/ffi
 ```
 
@@ -87,18 +82,6 @@ moon test --target all
 moon test --target native --enable-coverage
 moon coverage analyze -p justjavac/ffi -- -f summary
 ```
-
-## Coverage Reporting
-
-CI keeps the existing Linux, macOS, and Windows matrix, then uploads a native
-coverage report for each platform to Codecov using platform flags:
-
-- `linux`
-- `macos`
-- `windows`
-
-The badges above update after the branch workflow finishes and Codecov finishes
-processing the uploads.
 
 ## License
 
