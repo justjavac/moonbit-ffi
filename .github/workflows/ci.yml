@@ -7,15 +7,24 @@ on:
   pull_request:
   merge_group:
 
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   stable-check:
     strategy:
       matrix:
-        os: 
-          - ubuntu-latest
-          - macos-latest
-          # - macos-13
-          - windows-latest
+        include:
+          - os: ubuntu-latest
+            coverage_flag: linux
+            coverage_file: coverage-linux.xml
+          - os: macos-latest
+            coverage_flag: macos
+            coverage_file: coverage-macos.xml
+          - os: windows-latest
+            coverage_flag: windows
+            coverage_file: coverage-windows.xml
       fail-fast: false
     runs-on: ${{ matrix.os }}
     continue-on-error: false
@@ -53,6 +62,25 @@ jobs:
       - name: run moon test
         run: |
           moon test --target all
+
+      - name: run native coverage test
+        run: |
+          moon test --target native --enable-coverage
+
+      - name: export native coverage report
+        run: |
+          moon coverage analyze -p justjavac/ffi -- -f cobertura -o "${{ matrix.coverage_file }}"
+
+      - name: upload coverage to Codecov
+        if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
+        uses: codecov/codecov-action@v5
+        with:
+          use_oidc: true
+          disable_search: true
+          files: ./${{ matrix.coverage_file }}
+          flags: ${{ matrix.coverage_flag }}
+          name: ${{ matrix.coverage_flag }}-native
+          verbose: true
 
       - name: moon build
         if: false

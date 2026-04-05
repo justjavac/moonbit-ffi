@@ -2,12 +2,17 @@
   "name": "justjavac/ffi",
   "version": "0.2.0",
   "deps": {
-    "moonbitlang/x": "0.4.40"
+    "moonbitlang/x": "0.4.41"
   },
-  "readme": "README.md",
+  "readme": "README.mbt.md",
   "repository": "https://github.com/justjavac/moonbit-ffi",
   "license": "MIT",
-  "keywords": ["ffi", "bindings", "abi", "utils"],
+  "keywords": [
+    "ffi",
+    "bindings",
+    "abi",
+    "utils"
+  ],
   "description": "MoonBit Foreign Function Interface.",
   "source": "src"
 }
