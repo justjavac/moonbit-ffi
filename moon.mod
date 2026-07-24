@@ -3,7 +3,7 @@ name = "justjavac/ffi"
 version = "0.2.4"
 
 import {
-  "moonbitlang/x@0.4.46",
+  "moonbitlang/x@0.4.47",
 }
 
 readme = "README.mbt.md"
@@ -16,6 +16,4 @@ keywords = [ "ffi", "bindings", "abi", "utils" ]
 
 description = "MoonBit Foreign Function Interface."
 
-options(
-  source: "src",
-)
+source = "src"
